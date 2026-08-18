@@ -1,0 +1,340 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #111;
+}
+
+#game {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+#crosshair {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 10;
+    pointer-events: none;
+    text-shadow: 0 0 4px black;
+}
+
+#hud {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.topbar {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    color: white;
+    background: rgba(0, 0, 0, .45);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-shadow: 2px 2px #000;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 20px;
+    text-shadow: 2px 2px #000;
+}
+
+#info {
+    position: absolute;
+    left: 15px;
+    bottom: 115px;
+
+    display: flex;
+    gap: 15px;
+
+    color: white;
+    font-size: 13px;
+
+    background: rgba(0, 0, 0, .4);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+#hotbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 5px;
+
+    z-index: 30;
+}
+
+.slot {
+    width: 62px;
+    height: 62px;
+
+    border: 3px solid rgba(255,255,255,.35);
+    background: rgba(0,0,0,.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    border-radius: 5px;
+}
+
+.slot.selected {
+    border-color: white;
+    box-shadow: 0 0 15px white;
+    transform: translateY(-5px);
+}
+
+.slot span {
+    font-size: 30px;
+}
+
+.slot small {
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
+    color: white;
+}
+
+#startScreen,
+#inventory,
+#deathScreen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.65)
+        );
+}
+
+#inventory,
+#deathScreen {
+    display: none;
+}
+
+.menu {
+    width: 430px;
+    max-width: 92%;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background: rgba(20,20,20,.92);
+    border: 3px solid #777;
+    border-radius: 15px;
+
+    color: white;
+
+    box-shadow: 0 20px 80px rgba(0,0,0,.8);
+}
+
+.menu h1 {
+    font-size: 55px;
+    letter-spacing: 4px;
+
+    text-shadow:
+        4px 4px #222,
+        0 0 15px #5bff5b;
+}
+
+.subtitle {
+    margin: 10px 0 25px;
+    color: #bbb;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+
+    margin: 6px 0;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #4caf50;
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+button:hover {
+    transform: scale(1.03);
+    background: #66bb6a;
+}
+
+.controls {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background: rgba(255,255,255,.06);
+    border-radius: 8px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: #ddd;
+}
+
+.inventoryBox,
+.deathBox {
+    width: 500px;
+    max-width: 90%;
+
+    padding: 30px;
+
+    background: rgba(20,20,20,.95);
+
+    color: white;
+
+    border: 3px solid #777;
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+#inventoryItems {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+
+    margin: 20px 0;
+}
+
+.inventoryItem {
+    height: 70px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #333;
+
+    border: 2px solid #666;
+    border-radius: 5px;
+
+    font-size: 25px;
+}
+
+.inventoryItem small {
+    font-size: 11px;
+}
+
+.deathBox h1 {
+    font-size: 55px;
+    color: #ff4444;
+
+    text-shadow: 4px 4px #000;
+}
+
+#loading {
+    position: fixed;
+    inset: 0;
+
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #111;
+    color: white;
+}
+
+.loader {
+    width: 55px;
+    height: 55px;
+
+    border: 6px solid #333;
+    border-top-color: #66ff66;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media(max-width:600px) {
+
+    .slot {
+        width: 42px;
+        height: 42px;
+    }
+
+    .slot span {
+        font-size: 20px;
+    }
+
+    .menu h1 {
+        font-size: 38px;
+    }
+
+    .stats {
+        font-size: 14px;
+    }
+
+    #hotbar {
+        bottom: 8px;
+    }
+}
