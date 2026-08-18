@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockWorld - Voxel Survival</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="loading">
+    <div class="loader"></div>
+    <h1>BLOCKWORLD</h1>
+    <p>Generating world...</p>
+</div>
+
+<div id="game">
+
+    <div id="crosshair">+</div>
+
+    <div id="hud">
+
+        <div class="topbar">
+            <div class="brand">⛏ BLOCKWORLD</div>
+
+            <div class="stats">
+                <span id="health">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</span>
+                <span id="hunger">🍗🍗🍗🍗🍗🍗🍗🍗🍗🍗</span>
+            </div>
+        </div>
+
+        <div id="info">
+            <span id="coords">X: 0 Y: 0 Z: 0</span>
+            <span id="time">☀️ DAY</span>
+        </div>
+
+    </div>
+
+    <div id="hotbar"></div>
+
+    <div id="startScreen">
+        <div class="menu">
+            <h1>BLOCKWORLD</h1>
+            <p class="subtitle">A Minecraft-inspired voxel adventure</p>
+
+            <button id="playBtn">PLAY WORLD</button>
+            <button id="creativeBtn">CREATIVE MODE</button>
+            <button id="loadBtn">LOAD SAVE</button>
+
+            <div class="controls">
+                <b>CONTROLS</b>
+                <p>W A S D — Move</p>
+                <p>SPACE — Jump</p>
+                <p>SHIFT — Sprint</p>
+                <p>LEFT CLICK — Break block</p>
+                <p>RIGHT CLICK — Place block</p>
+                <p>1-8 — Select block</p>
+                <p>E — Inventory</p>
+                <p>F — Eat food</p>
+                <p>ESC — Release mouse</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="inventory">
+        <div class="inventoryBox">
+            <h2>INVENTORY</h2>
+            <div id="inventoryItems"></div>
+            <button id="closeInventory">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="deathScreen">
+        <div class="deathBox">
+            <h1>YOU DIED</h1>
+            <p>Your adventure has ended.</p>
+            <button id="respawnBtn">RESPAWN</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/PointerLockControls.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
